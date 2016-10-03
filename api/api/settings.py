@@ -129,3 +129,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = "C:\\Users\\Simon Herrera\\workspace\\python\\vintage-american-football-api\\api"
+# MEDIA_ROOT = "/home/sherrera/rock-island-independents/api/"
+MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}

@@ -6,12 +6,13 @@ from rest_framework import serializers
 class GameSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Game
-    fields = ('id', 'url', 'gameTitle', 'city', 'state', 'venueName', 'season', 'date')
+    fields = ('id', 'url', 'gameTitle', 'city', 'state', 'venueName', 'season', 'date', 'image1', 'image2', 'image3', 'image4')
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Player
-    fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber')
+    # fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1', 'image2', 'image3', 'image4')
+    fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1')
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
