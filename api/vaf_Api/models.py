@@ -24,6 +24,8 @@ class Player(models.Model):
   firstName = models.CharField(max_length=20)
   lastName = models.CharField(max_length=25)
   jerseyNumber = models.IntegerField()
+  email = models.CharField(default="NA", max_length=40)
+  phone = models.CharField(default="NA", max_length=14)
   image1 = models.ImageField(upload_to = 'player_images/', default = 'player_images/default_player_image.jpg')
   # image2 = models.ImageField(upload_to = 'player_images/', blank=True)
   # image3 = models.ImageField(upload_to = 'player_images/', blank=True)
