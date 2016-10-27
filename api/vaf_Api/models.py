@@ -44,6 +44,8 @@ class Player(models.Model):
     return '{0} {1}'.format(self.firstName, self.lastName)
 
 class Team(models.Model):
+  cityName = models.CharField(default="", max_length=45)
+  teamName = models.CharField(default="", max_length=45)
   managerFirstName = models.CharField(max_length=20)
   managerLastName = models.CharField(max_length=25)
   primaryColor = models.CharField(max_length=25)
