@@ -51,7 +51,8 @@ class Team(models.Model):
   primaryColor = models.CharField(max_length=25)
   secondaryColor = models.CharField(max_length=25)
   year = models.IntegerField(choices=year, default=2015)
-  playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
+  players = models.ManyToManyField(Player)
+  # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')
 
   # def __str__(self):

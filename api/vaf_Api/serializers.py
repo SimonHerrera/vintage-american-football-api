@@ -18,7 +18,7 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'managerFirstName', 'managerLastName', 'primaryColor', 'secondaryColor', 'year', 'playerId', 'image')
+    fields = ('id', 'url', 'cityName', 'teamName', 'managerFirstName', 'managerLastName', 'primaryColor', 'secondaryColor', 'year', 'players', 'image')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
