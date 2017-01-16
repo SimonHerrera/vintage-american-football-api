@@ -5,6 +5,17 @@ from django.utils import timezone
 year = [(number, number) for number in range(2015, 2020)]
 
 # Create your models is next Step
+class Manager(models.Model):
+    firstName = models.CharField(max_length=20)
+    lastName = models.CharField(max_length=25)
+    email = models.CharField(default="", max_length=40)
+    phone = models.CharField(default="", max_length=14)
+
+    def __str__(self):
+        # return self.lastName #only showed part of name, now shows all, is that legit?
+        return '{0} {1}'.format(self.firstName, self.lastName)
+
+
 class Game(models.Model):
   gameTitle = models.CharField(max_length=100)
   city = models.CharField(max_length=40)

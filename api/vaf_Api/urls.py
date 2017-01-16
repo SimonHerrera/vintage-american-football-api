@@ -8,6 +8,7 @@ router.register(r'games', views.GameList)
 router.register(r'players', views.PlayerList)
 router.register(r'teams', views.TeamList)
 router.register(r'equipment', views.EquipmentList)
+router.register(r'manager', views.ManagerList)
 
 urlpatterns = [
   url(r'^', include(router.urls)),

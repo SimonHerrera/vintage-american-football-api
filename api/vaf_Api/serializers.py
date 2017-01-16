@@ -25,6 +25,11 @@ class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
     model = Equipment
     fields = ('id', 'url', 'ballType', 'ballMfg')
 
+class ManagerSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Manager
+        fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+
 # #Need for superuser Auth
 # @csrf_exempt
 # def login_user(request):
