@@ -42,7 +42,6 @@ class Game(models.Model):
 class Player(models.Model):
   firstName = models.CharField(max_length=20)
   lastName = models.CharField(max_length=25)
-  jerseyNumber = models.IntegerField()
   email = models.CharField(default="", max_length=40)
   phone = models.CharField(default="", max_length=14)
   image1 = models.ImageField(upload_to = 'player_images/', default = 'player_images/default_player_image.jpg')
