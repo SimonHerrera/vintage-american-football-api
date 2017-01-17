@@ -1,4 +1,4 @@
-from vaf_Api.models import Game, Player, Team, Equipment
+from vaf_Api.models import Game, Player, Team, Equipment, Manager
 from rest_framework import serializers
 # from django.contrib.auth.models import User
 # from django.views.decorators.csrf import csrf_exempt #RT csrf crashed until I added
@@ -18,7 +18,7 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'managerFirstName', 'managerLastName', 'primaryColor', 'secondaryColor', 'year', 'players', 'image')
+    fields = ('id', 'url', 'cityName', 'teamName', 'manager', 'primaryColor', 'secondaryColor', 'year', 'manager', 'players', 'image')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
@@ -26,9 +26,9 @@ class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
     fields = ('id', 'url', 'ballType', 'ballMfg')
 
 class ManagerSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Manager
-        fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+  class Meta:
+    model = Manager
+    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
 
 # #Need for superuser Auth
 # @csrf_exempt

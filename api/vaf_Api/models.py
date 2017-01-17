@@ -6,15 +6,14 @@ year = [(number, number) for number in range(2015, 2020)]
 
 # Create your models is next Step
 class Manager(models.Model):
-    firstName = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=25)
-    email = models.CharField(default="", max_length=40)
-    phone = models.CharField(default="", max_length=14)
+  firstName = models.CharField(max_length=20)
+  lastName = models.CharField(max_length=25)
+  email = models.CharField(default="", max_length=40)
+  phone = models.CharField(default="", max_length=14)
 
-    def __str__(self):
-        # return self.lastName #only showed part of name, now shows all, is that legit?
-        return '{0} {1}'.format(self.firstName, self.lastName)
-
+  def __str__(self):
+    # return self.lastName #only showed part of name, now shows all, is that legit?
+    return '{0} {1}'.format(self.firstName, self.lastName)
 
 class Game(models.Model):
   gameTitle = models.CharField(max_length=100)
@@ -57,21 +56,23 @@ class Player(models.Model):
 class Team(models.Model):
   cityName = models.CharField(default="", max_length=45)
   teamName = models.CharField(default="", max_length=45)
-  managerFirstName = models.CharField(max_length=20)
-  managerLastName = models.CharField(max_length=25)
   primaryColor = models.CharField(max_length=25)
   secondaryColor = models.CharField(max_length=25)
   year = models.IntegerField(choices=year, default=2015)
+  manager = models.ForeignKey(Manager, related_name='teams', on_delete=models.SET_NULL, null=True)
   players = models.ManyToManyField(Player)
+  # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')
 
-  # def __str__(self):
-  #   return '{0} {1} - {2}'.format(self.cityName, self.teamName, year)
+  def __str__(self):
+    return '{0} {1} - {2}'.format(self.cityName, self.teamName, year)
 
 class Equipment(models.Model):
-  ballType = models.CharField(max_length=10)
-  ballMfg = models.CharField(max_length=30)
+  # ballType = models.CharField(max_length=10)
+  ballType = models.ForeignKey(Game, related_name='equipball', on_delete=models.SET_NULL, null=True)
+  ballMfg = models.ForeignKey(Game, related_name='equipballmfg', on_delete=models.SET_NULL, null=True)
+  # ballMfg = models.CharField(max_length=30)
 
   # def __str__(self):
   #   return self.nameTeams
