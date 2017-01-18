@@ -4,11 +4,12 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
+# router.register(r'playerteam', views.PlayerTeamList)
+router.register(r'manager', views.ManagerList)
 router.register(r'games', views.GameList)
 router.register(r'players', views.PlayerList)
 router.register(r'teams', views.TeamList)
 router.register(r'equipment', views.EquipmentList)
-router.register(r'manager', views.ManagerList)
 
 urlpatterns = [
   url(r'^', include(router.urls)),

@@ -1,4 +1,4 @@
-from vaf_Api.models import Game, Player, Team, Equipment, Manager
+from vaf_Api.models import Manager, Game, Player, Team, Equipment
 from rest_framework import serializers
 # from django.contrib.auth.models import User
 # from django.views.decorators.csrf import csrf_exempt #RT csrf crashed until I added
