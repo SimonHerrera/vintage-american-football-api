@@ -5,7 +5,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 # router.register(r'playerteam', views.PlayerTeamList)
-router.register(r'manager', views.ManagerList)
+router.register(r'managers', views.ManagerList)
 router.register(r'equipment', views.EquipmentList)
 router.register(r'players', views.PlayerList)
 router.register(r'locations', views.LocationList)
