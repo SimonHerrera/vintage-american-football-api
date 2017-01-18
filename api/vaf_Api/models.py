@@ -22,7 +22,7 @@ class Equipment(models.Model):
   # ballMfg = models.CharField(max_length=30)
 
   def __str__(self):
-    return '{0} {1}'.format(self.ballType, self.ballMfg)
+    return '{0} - {1}'.format(self.ballType, self.ballMfg)
 
 class Player(models.Model):
   firstName = models.CharField(max_length=20)
