@@ -1,13 +1,18 @@
-from vaf_Api.models import Manager, Game, Player, Team, Equipment
+from vaf_Api.models import Manager, Equipment, Player, Location, Team, Game
 from rest_framework import serializers
 # from django.contrib.auth.models import User
 # from django.views.decorators.csrf import csrf_exempt #RT csrf crashed until I added
 
 
-class GameSerializer(serializers.HyperlinkedModelSerializer):
+class ManagerSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
-    model = Game
-    fields = ('id', 'url', 'gameTitle', 'city', 'state', 'venueName', 'date', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'image1', 'image2', 'image3', 'image4')
+    model = Manager
+    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+
+class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
+  class Meta:
+    model = Equipment
+    fields = ('id', 'url', 'ballType', 'ballMfg')
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
@@ -15,20 +20,20 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     # fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1', 'image2', 'image3', 'image4')
     fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'image1')
 
+class LocationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Location
+        fields = ('id', 'url', 'city', 'state', 'venueName')
+
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Team
     fields = ('id', 'url', 'cityName', 'teamName', 'manager', 'primaryColor', 'secondaryColor', 'year', 'manager', 'players', 'image')
 
-class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
+class GameSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
-    model = Equipment
-    fields = ('id', 'url', 'ballType', 'ballMfg')
-
-class ManagerSerializer(serializers.HyperlinkedModelSerializer):
-  class Meta:
-    model = Manager
-    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+    model = Game
+    fields = ('id', 'url', 'location', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'ball', 'image1', 'image2', 'image3', 'image4')
 
 # #Need for superuser Auth
 # @csrf_exempt
