@@ -5,9 +5,10 @@ from rest_framework import serializers
 
 
 class ManagerSerializer(serializers.HyperlinkedModelSerializer):
+  # teams = TeamSerializer(many=True)
   class Meta:
     model = Manager
-    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'teams')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
@@ -17,18 +18,20 @@ class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Player
-    # fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1', 'image2', 'image3', 'image4')
     fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'image1')
+    # fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1', 'image2', 'image3', 'image4')
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Location
-        fields = ('id', 'url', 'city', 'state', 'venueName')
+  class Meta:
+      model = Location
+      fields = ('id', 'url', 'city', 'state', 'venueName')
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
+  # managerId = ManagerSerializer()
+  # playerId = PlayerSerializer()
   class Meta:
     model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'manager', 'primaryColor', 'secondaryColor', 'year', 'manager', 'players', 'image')
+    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image')
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:

@@ -51,8 +51,8 @@ class Team(models.Model):
   primaryColor = models.CharField(max_length=25)
   secondaryColor = models.CharField(max_length=25)
   year = models.IntegerField(choices=year, default=2015)
-  manager = models.ForeignKey(Manager, related_name='teams', on_delete=models.SET_NULL, null=True)
-  players = models.ManyToManyField(Player)
+  managerId = models.ForeignKey(Manager, related_name='teams', on_delete=models.SET_NULL, null=True)
+  playerId = models.ManyToManyField(Player)
   # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')
