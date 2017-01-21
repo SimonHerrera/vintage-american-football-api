@@ -29,7 +29,7 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
     fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image')
 
 class ManagerSerializer(serializers.HyperlinkedModelSerializer):
-  teams = TeamSerializer(many=True)
+  # teams = TeamSerializer(many=True)
   class Meta:
     model = Manager
     fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'teams')

@@ -51,7 +51,7 @@ class Team(models.Model):
   primaryColor = models.CharField(max_length=25)
   secondaryColor = models.CharField(max_length=25)
   year = models.IntegerField(choices=year, default=2015)
-  managerId = models.ForeignKey(Manager, related_name='teams', on_delete=models.SET_NULL, null=True)
+  managerId = models.ForeignKey(Manager, related_name='managerId', on_delete=models.SET_NULL, null=True)
   playerId = models.ManyToManyField(Player)
   # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
@@ -63,7 +63,7 @@ class Team(models.Model):
 class Game(models.Model):
   location = models.ForeignKey(Location, related_name='games', on_delete=models.SET_NULL, null=True)
   date = models.DateField(auto_now=False, auto_now_add=False)
-  visitorTeam = models.ForeignKey(Team, related_name='visitoTeam', on_delete=models.SET_NULL, null=True)
+  visitorTeam = models.ForeignKey(Team, related_name='visitorTeam', on_delete=models.SET_NULL, null=True)
   homeTeam = models.ForeignKey(Team, related_name='homeTeam', on_delete=models.SET_NULL, null=True)
   visitorScore = models.IntegerField(default=0)
   homeScore = models.IntegerField(default=0)
