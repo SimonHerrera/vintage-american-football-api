@@ -4,11 +4,6 @@ from rest_framework import serializers
 # from django.views.decorators.csrf import csrf_exempt #RT csrf crashed until I added
 
 
-class ManagerSerializer(serializers.HyperlinkedModelSerializer):
-  # teams = TeamSerializer(many=True)
-  class Meta:
-    model = Manager
-    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'teams')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
@@ -32,6 +27,12 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Team
     fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image')
+
+class ManagerSerializer(serializers.HyperlinkedModelSerializer):
+  teams = TeamSerializer(many=True)
+  class Meta:
+    model = Manager
+    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'teams')
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
