@@ -2,11 +2,15 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from vaf_Api.models import Manager, Equipment, Player, Location, Team, Game
-from vaf_Api.serializers import ManagerSerializer, EquipmentSerializer, PlayerSerializer, LocationSerializer, TeamSerializer, GameSerializer
+from vaf_Api.models import Franchise, Manager, Equipment, Player, Location, Team, Game
+from vaf_Api.serializers import FranchiseSerializer, ManagerSerializer, EquipmentSerializer, PlayerSerializer, LocationSerializer, TeamSerializer, GameSerializer
 
 
 # Create your views here.
+class FranchiseList(viewsets.ModelViewSet):
+  queryset =Franchise.objects.all()
+  serializer_class = FranchiseSerializer
+
 class ManagerList(viewsets.ModelViewSet):
   queryset =Manager.objects.all()
   serializer_class = ManagerSerializer

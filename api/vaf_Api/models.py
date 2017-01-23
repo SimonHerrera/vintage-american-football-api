@@ -15,6 +15,14 @@ class Manager(models.Model):
     # return self.lastName #only showed part of name, now shows all, is that legit?
     return '{0} {1}'.format(self.firstName, self.lastName)
 
+class Franchise(models.Model):
+  vafEstablished = models.DateField(auto_now=False, auto_now_add=False)
+  aboutOrgTeamParagraph = models.TextField(default="", max_length=400)
+  aboutOrgTeamParagraph2 = models.TextField(default="", max_length=400)
+
+def __str__(self):
+    return '{0}'.format(vafEstablished)
+
 class Equipment(models.Model):
   # ballType = models.CharField(max_length=10)
   ballType = models.CharField(default="", max_length=45)
@@ -38,14 +46,15 @@ class Player(models.Model):
     return '{0} {1}'.format(self.firstName, self.lastName)
 
 class Location(models.Model):
-  city = models.CharField(default='', max_length=40)
-  state = models.CharField(default='', max_length=2)
-  venueName = models.CharField(default='', max_length=50)
+  city = models.CharField(default="", max_length=40)
+  state = models.CharField(default="", max_length=2)
+  venueName = models.CharField(default="", max_length=50)
 
   def __str__(self):
     return '{0} {1} - {2}'.format(self.city, self.state, self.venueName)
 
 class Team(models.Model):
+  # maybe move city, name to Franchise once I understand
   cityName = models.CharField(default="", max_length=45)
   teamName = models.CharField(default="", max_length=45)
   primaryColor = models.CharField(max_length=25)
@@ -56,6 +65,7 @@ class Team(models.Model):
   # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')
+  imageInfo = models.CharField(default="Photo Information", max_length=100)
 
   def __str__(self):
     return '{0} {1} - {2}'.format(self.cityName, self.teamName, self.year)

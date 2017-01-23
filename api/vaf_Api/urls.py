@@ -4,7 +4,8 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-# router.register(r'playerteam', views.PlayerTeamList)
+# do I need franchise url and view - doubt it becuase they are only shown on team
+router.register(r'franchises', views.FranchiseList)
 router.register(r'managers', views.ManagerList)
 router.register(r'equipment', views.EquipmentList)
 router.register(r'players', views.PlayerList)
