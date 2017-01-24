@@ -38,9 +38,8 @@ class Player(models.Model):
   email = models.CharField(default="", max_length=40)
   phone = models.CharField(default="", max_length=14)
   image1 = models.ImageField(upload_to = 'player_images/', default = 'player_images/default_player_image.jpg')
-  # image2 = models.ImageField(upload_to = 'player_images/', blank=True)
-  # image3 = models.ImageField(upload_to = 'player_images/', blank=True)
-  # image4 = models.ImageField(upload_to = 'player_images/', blank=True)
+  imageInfo = models.CharField(default="", max_length=100)
+  playerInfo = models.TextField(default="", max_length=400)
 
   def __str__(self):
     return '{0} {1}'.format(self.firstName, self.lastName)
@@ -65,7 +64,7 @@ class Team(models.Model):
   # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')
-  imageInfo = models.CharField(default="Photo Information", max_length=100)
+  imageInfo = models.CharField(default="", max_length=100)
 
   def __str__(self):
     return '{0} {1} - {2}'.format(self.cityName, self.teamName, self.year)
@@ -87,6 +86,9 @@ class Game(models.Model):
   home4th = models.IntegerField(default=0)
   ball = models.ForeignKey(Equipment, related_name='games', on_delete=models.SET_NULL, null=True)
   image1 = models.ImageField(upload_to = 'game_images/', default = 'game_images/default_game_image.jpg')
+  image1Info = models.CharField(default="", max_length=100)
+  gameSummary = models.TextField(default="", max_length=400)
+  gameSummary2 = models.TextField(default="", max_length=400)
   image2 = models.ImageField(upload_to = 'game_images/', blank=True)
   image3 = models.ImageField(upload_to = 'game_images/', blank=True)
   image4 = models.ImageField(upload_to = 'game_images/', blank=True)

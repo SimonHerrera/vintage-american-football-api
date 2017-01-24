@@ -17,7 +17,7 @@ class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Player
-    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'image1')
+    fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone', 'image1', 'imageInfo', 'playerInfo')
     # fields = ('id', 'url', 'firstName', 'lastName', 'jerseyNumber', 'image1', 'image2', 'image3', 'image4')
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
@@ -39,14 +39,22 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
     model = Team
     fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image', 'imageInfo')
 
-  # def get_managerId(self, obj)
-  #   return str(obj.managerId.firstName)
+# http://www.django-rest-framework.org/api-guide/relations/
+  # def create(self, validated_data):
+  #     managersId_data = validated_data.pop('managerId')
+  #     team = Team.objects.create(**validated_data)
+  #     for managerId_data in managersId_data:
+  #         Team.objects.create(team=team, **managerId_data)
+  #     return team
 
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
+  visitorTeam = TeamSerializer()
+  homeTeam = TeamSerializer()
+  location = LocationSerializer()
   class Meta:
     model = Game
-    fields = ('id', 'url', 'location', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'ball', 'image1', 'image2', 'image3', 'image4')
+    fields = ('id', 'url', 'location', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'ball', 'image1', 'image1Info', 'gameSummary', 'gameSummary2', 'image2', 'image3', 'image4')
 
 # #Need for superuser Auth
 # @csrf_exempt
