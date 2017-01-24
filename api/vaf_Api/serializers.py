@@ -33,7 +33,7 @@ class ManagerSerializer(serializers.HyperlinkedModelSerializer):
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
-  # playerId = PlayerSerializer()
+  playerId = PlayerSerializer(many=True)
   # managerId = SerializerMethodField()
   class Meta:
     model = Team
