@@ -10,6 +10,8 @@ from vaf_Api.serializers import FranchiseSerializer, ManagerSerializer, Equipmen
 class FranchiseList(viewsets.ModelViewSet):
   queryset =Franchise.objects.all()
   serializer_class = FranchiseSerializer
+  # permission_classes = (IsOwnerOrReadOnly,) will need to create this class later
+  # video on Django,Rest,Ang on permissions and file and objects
 
 class ManagerList(viewsets.ModelViewSet):
   queryset =Manager.objects.all()

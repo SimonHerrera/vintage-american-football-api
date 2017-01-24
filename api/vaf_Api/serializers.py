@@ -1,5 +1,6 @@
 from vaf_Api.models import Franchise, Manager, Equipment, Player, Location, Team, Game
 from rest_framework import serializers
+# from rest_framework.serializers import (ModelSerializer, HyperlinkedIdentityField, SerializerMethodField)
 # from django.contrib.auth.models import User
 # from django.views.decorators.csrf import csrf_exempt #RT csrf crashed until I added
 
@@ -24,18 +25,23 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
       model = Location
       fields = ('id', 'url', 'city', 'state', 'venueName')
 
-class TeamSerializer(serializers.HyperlinkedModelSerializer):
-  # managerId = ManagerSerializer()
-  # playerId = PlayerSerializer()
-  class Meta:
-    model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image', 'imageInfo')
-
 class ManagerSerializer(serializers.HyperlinkedModelSerializer):
   # teams = TeamSerializer(many=True)
   class Meta:
     model = Manager
     fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
+
+class TeamSerializer(serializers.HyperlinkedModelSerializer):
+  managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
+  # playerId = PlayerSerializer()
+  # managerId = SerializerMethodField()
+  class Meta:
+    model = Team
+    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image', 'imageInfo')
+
+  # def get_managerId(self, obj)
+  #   return str(obj.managerId.firstName)
+
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
