@@ -38,7 +38,7 @@ class Player(models.Model):
   email = models.CharField(default="", max_length=40)
   phone = models.CharField(default="", max_length=14)
   image1 = models.ImageField(upload_to = 'player_images/', default = 'player_images/default_player_image.jpg')
-  imageInfo = models.CharField(default="", max_length=100)
+  image1Info = models.CharField(default="", max_length=100)
   playerInfo = models.TextField(default="", max_length=400)
 
   def __str__(self):
