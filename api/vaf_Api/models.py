@@ -17,8 +17,12 @@ class Manager(models.Model):
 
 class Franchise(models.Model):
   vafEstablished = models.DateField(auto_now=False, auto_now_add=False)
-  aboutOrgTeamParagraph = models.TextField(default="", max_length=400)
-  aboutOrgTeamParagraph2 = models.TextField(default="", max_length=400)
+  aboutVafTeam1 = models.TextField(default="", max_length=400)
+  aboutVafTeam1 = models.TextField(default="", max_length=400)
+  aboutOrgTeam1 = models.TextField(default="", max_length=400)
+  aboutOrgTeam2 = models.TextField(default="", max_length=400)
+  franchiseLogo = models.ImageField(upload_to = 'franchise_images/', default = 'franchise_images/default_franchise_image.jpg')
+
 
 def __str__(self):
     return '{0}'.format(vafEstablished)

@@ -7,7 +7,7 @@ from rest_framework import serializers
 class FranchiseSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Franchise
-    fields = ('id', 'url', 'vafEstablished', 'aboutOrgTeamParagraph', 'aboutOrgTeamParagraph2')
+    fields = ('id', 'url', 'vafEstablished', 'aboutVafTeam1', 'aboutVafTeam2', 'aboutOrgTeam1', 'aboutOrgTeam2', 'franchiseLogo')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
