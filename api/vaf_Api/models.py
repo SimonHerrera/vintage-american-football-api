@@ -65,6 +65,7 @@ class Team(models.Model):
   year = models.IntegerField(choices=year, default=2015)
   managerId = models.ForeignKey(Manager, related_name='managerId', on_delete=models.SET_NULL, null=True)
   playerId = models.ManyToManyField(Player)
+  franchiseId = models.ForeignKey(Franchise, related_name='franchiseId', on_delete=models.SET_NULL, null=True)
   # want many to many here because its natural that a team has many players and rare a player plays on many teams
   # playerId = models.ForeignKey(Player, related_name='players', on_delete=models.SET_NULL, null=True)
   image = models.ImageField(upload_to = 'team_images/', default = 'team_images/default_team_image.jpg')

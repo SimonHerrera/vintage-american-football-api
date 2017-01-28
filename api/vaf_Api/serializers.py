@@ -33,11 +33,12 @@ class ManagerSerializer(serializers.HyperlinkedModelSerializer):
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
+  franchiseId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
   playerId = PlayerSerializer(many=True)
   # managerId = SerializerMethodField()
   class Meta:
     model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'image', 'imageInfo')
+    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'franchiseId', 'image', 'imageInfo')
 
 # http://www.django-rest-framework.org/api-guide/relations/
   # def create(self, validated_data):
