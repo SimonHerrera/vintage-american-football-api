@@ -7,7 +7,7 @@ from rest_framework import serializers
 class FranchiseSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Franchise
-    fields = ('id', 'url', 'vafEstablished', 'aboutVafTeam1', 'aboutVafTeam2', 'aboutOrgTeam1', 'aboutOrgTeam2', 'franchiseLogo')
+    fields = ('id', 'url', 'FranCityName', 'FranTeamName', 'vafEstablished', 'aboutVafTeam1', 'aboutVafTeam2', 'aboutOrgTeam1', 'aboutOrgTeam2', 'franchiseLogo')
 
 class EquipmentSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
@@ -33,12 +33,11 @@ class ManagerSerializer(serializers.HyperlinkedModelSerializer):
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
-  franchiseId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
+  franchiseId = FranchiseSerializer() # turn off to add managers - turn on to allow it to be seen in angular
   playerId = PlayerSerializer(many=True)
-  # managerId = SerializerMethodField()
   class Meta:
     model = Team
-    fields = ('id', 'url', 'cityName', 'teamName', 'primaryColor', 'secondaryColor', 'year', 'managerId', 'playerId', 'franchiseId', 'image', 'imageInfo')
+    fields = ('id', 'url', 'franchiseId', 'managerId', 'playerId', 'cityName', 'teamName', 'year', 'primaryColor', 'secondaryColor', 'image', 'imageInfo')
 
 # http://www.django-rest-framework.org/api-guide/relations/
   # def create(self, validated_data):
@@ -52,10 +51,11 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
 class GameSerializer(serializers.HyperlinkedModelSerializer):
   visitorTeam = TeamSerializer()
   homeTeam = TeamSerializer()
-  location = LocationSerializer()
+  locationId = LocationSerializer()
+  equipmentId = EquipmentSerializer()
   class Meta:
     model = Game
-    fields = ('id', 'url', 'location', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'ball', 'image1', 'image1Info', 'gameSummary', 'gameSummary2', 'image2', 'image3', 'image4')
+    fields = ('id', 'url', 'locationId', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'equipmentId', 'image1', 'image1Info', 'gameSummary', 'gameSummary2', 'image2', 'image3', 'image4')
 
 # #Need for superuser Auth
 # @csrf_exempt
