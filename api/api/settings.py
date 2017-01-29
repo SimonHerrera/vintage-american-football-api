@@ -57,7 +57,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '127.0.0.1:8080',
-    # '104.236.6.142' # add ip address here when it is know
+    '104.236.6.142' # add ip address here when it is known
     )
 
 ROOT_URLCONF = 'api.urls'
@@ -130,8 +130,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = "C:\\Users\\Simon Herrera\\workspace\\python\\vintage-american-football-api\\api"
-# MEDIA_ROOT = "/home/sherrera/vintage-american-football-api/api/"
+# MEDIA_ROOT = "C:\\Users\\Simon Herrera\\workspace\\python\\vintage-american-football-api\\api"
+MEDIA_ROOT = "/home/sherrera/vintage-american-football-api/api/"
 MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
