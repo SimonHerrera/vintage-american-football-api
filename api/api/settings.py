@@ -130,8 +130,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = "C:\\Users\\Simon Herrera\\workspace\\python\\vintage-american-football-api\\api"
-# MEDIA_ROOT = "/home/sherrera/vintage-american-football-api/api/"
+# MEDIA_ROOT = "C:\\Users\\Simon Herrera\\workspace\\python\\vintage-american-football-api\\api"
+MEDIA_ROOT = "/home/sherrera/vintage-american-football-api/api/"
 MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
