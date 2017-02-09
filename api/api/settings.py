@@ -57,7 +57,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '127.0.0.1:8080',
-    '104.236.6.142' # add ip address here when it is known
+    '104.236.6.142', # add ip address here when it is known
     'vintageamericanfootball.com' # added name vintage
     )
 
