@@ -45,7 +45,7 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
   #     team = Team.objects.create(**validated_data)
   #     for managerId_data in managersId_data:
   #         Team.objects.create(team=team, **managerId_data)
-  #     return team
+  #     return teams
 
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
