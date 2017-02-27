@@ -23,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tlf9q=(r3lol5+ikkrjqau!gy6n_vbkr3)z7gddm&km@%ma143'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost:8080', '127.0.0.1:8080', '104.236.6.142', 'vintageamericanfootball.com', 'www.vintageamericanfootball.com']
+ALLOWED_HOSTS = []
 
 
-# Application definitions
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
