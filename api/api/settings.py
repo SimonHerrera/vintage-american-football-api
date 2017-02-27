@@ -28,7 +28,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['localhost:8080', '127.0.0.1:8080', '104.236.6.142', 'vintageamericanfootball.com', 'www.vintageamericanfootball.com']
 
 
-# Application definition
+# Application definitions
 
 INSTALLED_APPS = [
     'django.contrib.admin',
