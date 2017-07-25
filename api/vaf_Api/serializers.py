@@ -34,7 +34,7 @@ class ManagerSerializer(serializers.HyperlinkedModelSerializer):
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
   managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
   franchiseId = FranchiseSerializer() # turn off to add managers - turn on to allow it to be seen in angular
-  # playerId = PlayerSerializer(many=True)
+  playerId = PlayerSerializer(many=True)
   class Meta:
     model = Team
     fields = ('id', 'url', 'franchiseId', 'managerId', 'playerId', 'cityName', 'teamName', 'year', 'primaryColor', 'secondaryColor', 'image', 'imageInfo')
