@@ -32,8 +32,8 @@ class ManagerSerializer(serializers.HyperlinkedModelSerializer):
     fields = ('id', 'url', 'firstName', 'lastName', 'email', 'phone')
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
-  # managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
-  # franchiseId = FranchiseSerializer() # turn off to add managers - turn on to allow it to be seen in angular
+  managerId = ManagerSerializer() # turn off to add managers - turn on to allow it to be seen in angular
+  franchiseId = FranchiseSerializer() # turn off to add managers - turn on to allow it to be seen in angular
   playerId = PlayerSerializer(many=True)
   class Meta:
     model = Team
@@ -49,10 +49,10 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
-  # visitorTeam = TeamSerializer()
-  # homeTeam = TeamSerializer()
-  # locationId = LocationSerializer()
-  # equipmentId = EquipmentSerializer()
+  visitorTeam = TeamSerializer()
+  homeTeam = TeamSerializer()
+  locationId = LocationSerializer()
+  equipmentId = EquipmentSerializer()
   class Meta:
     model = Game
     fields = ('id', 'url', 'locationId', 'date', 'visitorTeam', 'homeTeam', 'visitorScore', 'homeScore', 'visitor1st', 'visitor2nd', 'visitor3rd', 'visitor4th', 'home1st', 'home2nd', 'home3rd', 'home4th', 'equipmentId', 'image1', 'image1Info', 'gameSummary', 'gameSummary2', 'image2', 'image3', 'image4')
